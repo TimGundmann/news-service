@@ -36,6 +36,6 @@ public class News {
 	
 	private String headLine;
 	
-	private LocalDateTime timeStamp;
+	private LocalDateTime timestamp;
 	
 }
