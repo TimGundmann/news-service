@@ -34,7 +34,7 @@ public class News {
     @Lob
 	private String content;
 	
-	private String headLine;
+	private String headline;
 	
 	private LocalDateTime timestamp;
 	
