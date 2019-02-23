@@ -19,7 +19,7 @@ public class NewsController {
 		this.newsRepository = newsRepository;
 	}
 	
-	@GetMapping("all")
+	@GetMapping("/all")
 	public Iterable<News> get() {
 		return this.newsRepository.findAll();
 	}
