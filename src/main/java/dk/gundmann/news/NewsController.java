@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import dk.gundmann.security.IsAdmin;
 
 @RestController
-@RequestMapping("/news")
+@RequestMapping("/")
 public class NewsController {
 
 	private NewsRepository newsRepository;
@@ -19,7 +19,7 @@ public class NewsController {
 		this.newsRepository = newsRepository;
 	}
 	
-	@GetMapping()
+	@GetMapping("all")
 	public Iterable<News> get() {
 		return this.newsRepository.findAll();
 	}
