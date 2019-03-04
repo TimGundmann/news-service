@@ -1,4 +1,4 @@
-package dk.gundmann.news;
+package dk.gundmann;
 
 
 import org.junit.Test;

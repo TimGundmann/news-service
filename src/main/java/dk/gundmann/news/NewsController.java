@@ -8,15 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dk.gundmann.security.IsAdmin;
+import dk.gundmann.userclient.UserClient;
 
 @RestController
 @RequestMapping("/")
 public class NewsController {
 
 	private NewsRepository newsRepository;
+	private UserClient userClient;
 
-	public NewsController(NewsRepository newsRepository) {
+	public NewsController(NewsRepository newsRepository, UserClient userClient) {
 		this.newsRepository = newsRepository;
+		this.userClient = userClient;
 	}
 	
 	@GetMapping("/all")
@@ -28,12 +31,14 @@ public class NewsController {
 	@IsAdmin
 	public void set(@RequestBody News news) {
 		this.newsRepository.save(news);
+		this.userClient.notifiy("Nyheder");
 	}
 	
 	@PostMapping("/delete/{id}")
 	@IsAdmin
-	public void deletee(@PathVariable String id) {
+	public void delete(@PathVariable String id) {
 		this.newsRepository.deleteById(id);
+		
 	}
 	
 }
