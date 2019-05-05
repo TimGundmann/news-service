@@ -8,18 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dk.gundmann.security.IsAdmin;
-import dk.gundmann.userclient.UserClient;
+import dk.gundmann.userclient.UserService;
 
 @RestController
 @RequestMapping("/")
 public class NewsController {
 
 	private NewsRepository newsRepository;
-	private UserClient userClient;
+	private UserService userNotifyer;
 
-	public NewsController(NewsRepository newsRepository, UserClient userClient) {
+	public NewsController(NewsRepository newsRepository, UserService userNotifyer) {
 		this.newsRepository = newsRepository;
-		this.userClient = userClient;
+		this.userNotifyer = userNotifyer;
 	}
 	
 	@GetMapping("/all")
@@ -31,7 +31,7 @@ public class NewsController {
 	@IsAdmin
 	public void set(@RequestBody News news) {
 		if (news.getId() == null) {
-			this.userClient.notifiy("Nyheder");
+			this.userNotifyer.notifiy("Nyheder");
 		}
 		this.newsRepository.save(news);
 	}
