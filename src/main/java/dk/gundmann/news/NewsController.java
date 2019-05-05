@@ -30,9 +30,7 @@ public class NewsController {
 	@PostMapping("/update")
 	@IsAdmin
 	public void set(@RequestBody News news) {
-		if (news.getId() == null) {
-			this.userNotifyer.notifiy("Nyheder");
-		}
+		this.userNotifyer.notifiy("Nyheder");
 		this.newsRepository.save(news);
 	}
 	
