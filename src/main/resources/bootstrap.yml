@@ -1,0 +1,12 @@
+server:
+  port: 8445
+
+spring:
+  profiles:
+    active:
+    - prod
+  application:
+    name: news
+  cloud:
+    config:
+      uri: http://192.168.1.100:5678
