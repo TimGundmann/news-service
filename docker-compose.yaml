@@ -4,8 +4,9 @@ services:
     network_mode: "host"
     restart: "always"
     build: .
-    image: plan-service
+    image: news-service
     volumes:
       - /security:/security
     environment:
       TZ: "Europe/Amsterdam"
+    container_name: news-service
